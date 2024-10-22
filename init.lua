@@ -438,6 +438,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       vim.keymap.set('n', 'gt', '<cmd>tab split | lua vim.lsp.buf.definition()<CR>', {})
+      -- switch tabs right to left.
+      vim.keymap.set('n', 'tp', '<C-PageUp>', {})
+      vim.keymap.set('n', 'tn', '<C-PageDown>', {})
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
