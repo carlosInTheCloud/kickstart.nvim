@@ -207,10 +207,23 @@ Press escape
 ```
 gd
 ```
+
 ### Go to definition on new tab
 
 ```
 gt
+```
+
+### Go to defition on vertical split
+
+```
+gv
+```
+
+### Go to definition on horizontal split
+
+```
+gh
 ```
 
 ### Go to reference
