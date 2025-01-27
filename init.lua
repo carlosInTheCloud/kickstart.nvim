@@ -429,10 +429,10 @@ require('lazy').setup({
         pickers = {
           find_files = {
             hidden = true,
-            initial_mode = 'normal',
+            initial_mode = 'insert',
           },
           buffers = {
-            initial_mode = 'normal',
+            initial_mode = 'insert',
           },
         },
         extensions = {
@@ -465,6 +465,9 @@ require('lazy').setup({
       vim.keymap.set('n', 'tp', '<C-PageUp>', {})
       vim.keymap.set('n', 'tn', '<C-PageDown>', {})
       vim.keymap.set('n', 'zz', 'za', {})
+      vim.keymap.set('n', 'nt', '<cmd>Neotree<CR>', {})
+      vim.keymap.set('n', 'qu', '<cmd>q<CR>', {})
+      vim.keymap.set('n', '<leader>vt', '<cmd>vert term<CR>', {})
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -817,6 +820,7 @@ require('lazy').setup({
       --  into multiple repos for maintenance purposes.
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
     },
     config = function()
       -- See `:help cmp`
@@ -893,6 +897,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'nvim_lsp_signature_help' },
         },
       }
     end,
