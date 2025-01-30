@@ -902,6 +902,7 @@ require('lazy').setup({
           { name = 'luasnip' },
           { name = 'path' },
           { name = 'nvim_lsp_signature_help' },
+          { name = 'copilot' },
         },
       }
     end,
@@ -1022,25 +1023,20 @@ require('lazy').setup({
     opts = {},
   },
   {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    build = ':Copilot auth',
+    'zbirenbaum/copilot-cmp',
     event = 'InsertEnter',
-    opts = {
-      suggestion = {
-        enabled = not vim.g.ai_cmp,
-        auto_trigger = true,
-        keymap = {
-          accept = false, -- handled by nvim-cmp / blink.cmp
-          next = '<M-]>',
-          prev = '<M-[>',
-        },
-      },
-      panel = { enabled = false },
-      filetypes = {
-        markdown = true,
-        help = true,
-      },
+    config = function()
+      require('copilot_cmp').setup()
+    end,
+    dependencies = {
+      'zbirenbaum/copilot.lua',
+      cmd = 'Copilot',
+      config = function()
+        require('copilot').setup {
+          suggestion = { enabled = false },
+          panel = { enabled = false },
+        }
+      end,
     },
   }, -- you can continue same window with `<space>sr` which resumes last telescope search
 }, {
