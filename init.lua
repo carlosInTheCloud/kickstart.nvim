@@ -201,7 +201,15 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
+vim.keymap.set('n', 'gv', ':vsplit | lua vim.lsp.buf.definition()<CR>', {})
+vim.keymap.set('n', 'gt', '<cmd>tab split | lua vim.lsp.buf.definition()<CR>', {})
+-- switch tabs right to left.
+vim.keymap.set('n', 'tp', '<C-PageUp>', {})
+vim.keymap.set('n', 'tn', '<C-PageDown>', {})
+vim.keymap.set('n', 'zz', 'za', {})
+vim.keymap.set('n', 'nt', '<cmd>Neotree<CR>', {})
+vim.keymap.set('n', 'qu', '<cmd>q<CR>', {})
+vim.keymap.set('n', '<leader>vt', '<cmd>vert term<CR>', {})
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -320,38 +328,8 @@ require('lazy').setup({
         mappings = vim.g.have_nerd_font,
         -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
         -- default whick-key.nvim defined Nerd Font icons, otherwise define a string table
-        keys = vim.g.have_nerd_font and {} or {
-          Up = '<Up> ',
-          Down = '<Down> ',
-          Left = '<Left> ',
-          Right = '<Right> ',
-          C = '<C-…> ',
-          M = '<M-…> ',
-          D = '<D-…> ',
-          S = '<S-…> ',
-          CR = '<CR> ',
-          Esc = '<Esc> ',
-          ScrollWheelDown = '<ScrollWheelDown> ',
-          ScrollWheelUp = '<ScrollWheelUp> ',
-          NL = '<NL> ',
-          BS = '<BS> ',
-          Space = '<Space> ',
-          Tab = '<Tab> ',
-          F1 = '<F1>',
-          F2 = '<F2>',
-          F3 = '<F3>',
-          F4 = '<F4>',
-          F5 = '<F5>',
-          F6 = '<F6>',
-          F7 = '<F7>',
-          F8 = '<F8>',
-          F9 = '<F9>',
-          F10 = '<F10>',
-          F11 = '<F11>',
-          F12 = '<F12>',
-        },
+        keys = {},
       },
-
       -- Document existing key chains
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
@@ -463,15 +441,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', 'gh', ':belowright split | lua vim.lsp.buf.definition()<CR>', {})
-      vim.keymap.set('n', 'gv', ':vsplit | lua vim.lsp.buf.definition()<CR>', {})
-      vim.keymap.set('n', 'gt', '<cmd>tab split | lua vim.lsp.buf.definition()<CR>', {})
-      -- switch tabs right to left.
-      vim.keymap.set('n', 'tp', '<C-PageUp>', {})
-      vim.keymap.set('n', 'tn', '<C-PageDown>', {})
-      vim.keymap.set('n', 'zz', 'za', {})
-      vim.keymap.set('n', 'nt', '<cmd>Neotree<CR>', {})
-      vim.keymap.set('n', 'qu', '<cmd>q<CR>', {})
-      vim.keymap.set('n', '<leader>vt', '<cmd>vert term<CR>', {})
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -932,7 +901,7 @@ require('lazy').setup({
     opts = {
       -- no_italic = true,
       -- term_colors = true,
-      -- transparent_background = false,
+      transparent_background = true,
       -- styles = {
       --   comments = {},
       --   conditionals = {},
@@ -949,8 +918,8 @@ require('lazy').setup({
       color_overrides = {
         mocha = {
           base = '#000000',
-          mantle = '#000000',
-          crust = '#000000',
+          --mantle = '#000000',
+          --crust = '#FF00FF',
         },
       },
       integrations = {
@@ -958,10 +927,10 @@ require('lazy').setup({
           enabled = true,
           -- style = 'nvchad',
         },
-        -- dropbar = {
-        --   enabled = true,
-        --   color_mode = true,
-        -- },
+        dropbar = {
+          enabled = true,
+          color_mode = true,
+        },
       },
     },
     init = function()
@@ -969,9 +938,8 @@ require('lazy').setup({
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
       vim.cmd.colorscheme 'catppuccin'
-
       -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+      --vim.cmd.hi 'Comment gui=none'
     end,
   },
   -- Highlight todo, notes, etc in comments
@@ -1009,7 +977,12 @@ require('lazy').setup({
       statusline.section_location = function()
         return '%2l:%-2v'
       end
-
+      require('mini.comment').setup {
+        commment = 'gc',
+        comment_line = 'gcc',
+        comment_visual = 'gc',
+        text_objects = 'gc',
+      }
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
