@@ -201,8 +201,8 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-vim.keymap.set('n', 'gv', ':vsplit | lua vim.lsp.buf.definition()<CR>', {})
-vim.keymap.set('n', 'gt', '<cmd>tab split | lua vim.lsp.buf.definition()<CR>', {})
+vim.keymap.set('n', '<leader>gv', ':vsplit | lua vim.lsp.buf.definition()<CR>', {})
+vim.keymap.set('n', '<leader>gt', '<cmd>tab split | lua vim.lsp.buf.definition()<CR>', {})
 -- switch tabs right to left.
 vim.keymap.set('n', 'tp', '<C-PageUp>', {})
 vim.keymap.set('n', 'tn', '<C-PageDown>', {})
@@ -334,6 +334,7 @@ require('lazy').setup({
       spec = {
         { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
         { '<leader>d', group = '[D]ocument' },
+
         { '<leader>r', group = '[R]ename' },
         { '<leader>s', group = '[S]earch' },
         { '<leader>w', group = '[W]orkspace' },
