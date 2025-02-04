@@ -177,7 +177,7 @@ p
 ```
 
 ### Multiline comment
-
+## With VIM Commands
 highlight text 
 ```
 <ctrl>v(h,j,k,l)
@@ -199,6 +199,20 @@ Press escape
 ```
 <Esc>
 ```
+## WIth mini.comments
+highlight text
+```
+<ctrl>v(h,j,k,l)
+```
+hit gc to comment. Repeat to uncomment
+
+### Multiline Indent
+highlight text 
+```
+<ctrl>v(h,j,k,l)
+```
+press shit+> (to the right) or shift+< (to the left)
+To repeat the previous command, hit the "."
 
 ## LSPs
 
@@ -266,4 +280,8 @@ Cppath
 
 ```
 :imap
+```
+### Markdown Preview
+```
+:MarkdownPreview
 ```
