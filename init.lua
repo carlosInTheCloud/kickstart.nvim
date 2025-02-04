@@ -1041,7 +1041,7 @@ require('lazy').setup({
     end,
     dependencies = {
       'zbirenbaum/copilot.lua',
-      cmd = 'Copilot',
+      cmd = 'Copilot disable',
       config = function()
         require('copilot').setup {
           suggestion = { enabled = false },
