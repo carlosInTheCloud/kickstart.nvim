@@ -207,9 +207,10 @@ vim.keymap.set('n', '<leader>gt', '<cmd>tab split | lua vim.lsp.buf.definition()
 vim.keymap.set('n', 'tp', '<C-PageUp>', {})
 vim.keymap.set('n', 'tn', '<C-PageDown>', {})
 vim.keymap.set('n', 'zz', 'za', {})
-vim.keymap.set('n', 'nt', '<cmd>Neotree<CR>', {})
+vim.keymap.set('n', '<leader>nt', '<cmd>Neotree<CR>', {})
 vim.keymap.set('n', 'qu', '<cmd>q<CR>', {})
 vim.keymap.set('n', '<leader>vt', '<cmd>vert term<CR>', {})
+vim.keymap.set('n', '<leader>wa', '<cmd>wa<CR>', {})
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
