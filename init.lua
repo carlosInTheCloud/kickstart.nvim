@@ -422,7 +422,8 @@ require('lazy').setup({
         pickers = {
           find_files = {
             hidden = true,
-            initial_mode = 'insert',
+            no_ignore = true,
+            initial_mode = 'normal',
           },
           buffers = {
             initial_mode = 'insert',
