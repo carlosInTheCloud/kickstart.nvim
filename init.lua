@@ -98,7 +98,7 @@ vim.g.have_nerd_font = false
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 -- set text to no-wrap
-vim.opt.wrap = false
+vim.opt.wrap = true
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -426,7 +426,7 @@ require('lazy').setup({
             initial_mode = 'normal',
           },
           buffers = {
-            initial_mode = 'insert',
+            initial_mode = 'normal',
           },
         },
         extensions = {
@@ -907,7 +907,7 @@ require('lazy').setup({
     opts = {
       -- no_italic = true,
       -- term_colors = true,
-      transparent_background = true,
+      transparent_background = false,
       -- styles = {
       --   comments = {},
       --   conditionals = {},
@@ -923,7 +923,7 @@ require('lazy').setup({
       -- },
       color_overrides = {
         mocha = {
-          base = '#000000',
+          base = '#101010',
           --mantle = '#000000',
           --crust = '#FF00FF',
         },
