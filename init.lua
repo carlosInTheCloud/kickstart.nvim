@@ -111,6 +111,17 @@ vim.opt.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = true
 
+-- Set the default width for vertical windows
+local default_width = 90
+
+-- Ensure the width is applied when opening a new vertical split
+vim.api.nvim_create_autocmd('WinNew', {
+  pattern = '*',
+  callback = function()
+    vim.cmd('vertical resize ' .. default_width)
+  end,
+})
+
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
