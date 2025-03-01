@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd('WinNew', {
 })
 -- enable copy/paste from clipboard
 vim.schedule(function()
-	vim.opt.clipboard = 'unnamedplus'
+  vim.opt.clipboard = 'unnamedplus'
 end)
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -68,16 +68,16 @@ vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 --vim.opt.termguicolors = true -- Ensure true color support
 -- Set the background color of the main buffer
-vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" })
+vim.api.nvim_set_hl(0, 'Normal', { bg = '#000000' })
 -- Set a different background for inactive buffers
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "#050505" })
+vim.api.nvim_set_hl(0, 'NormalNC', { bg = '#050505' })
 -- Set the vertical border color:
-vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#222222", bg = "NONE" })
+vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#222222', bg = 'NONE' })
 -- Set the status bar color
 -- vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#aaaaaa", bg = "#101010", bold = true }) -- Active window
 -- vim.api.nvim_set_hl(0, "StatusLine", { fg = "#aaaaaa", bg = "#303030" }) -- Inactive windows
 -- Set default font color
-vim.api.nvim_set_hl(0, "Normal", { fg = "#ffffff" }) -- White text on dark background
+vim.api.nvim_set_hl(0, 'Normal', { fg = '#ffffff' }) -- White text on dark background
 ----------------------------------------------------------------------------------------------------------
 --- KEY MAPS
 ------------------------------------------------------------------------------------------------------------
@@ -142,7 +142,7 @@ local highlight = {
 --  To update plugins you can run
 --    :Lazy update
 -- NOTE: Here is where you install your plugins.
-require('lazy').setup({
+require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
   { -- Highlight, edit, and navigate code
@@ -252,22 +252,22 @@ require('lazy').setup({
       --'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
-       vim.api.nvim_create_autocmd('LspAttach', {
+      vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
-           local map = function(keys, func, desc, mode)
+          local map = function(keys, func, desc, mode)
             mode = mode or 'n'
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
           -- Jump to the definition of the word under your cursor.
-           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
           -- Find references for the word under your cursor.
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
           map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
           -- Jump to the type of the word under your cursor.
-           map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
           map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
@@ -357,7 +357,7 @@ require('lazy').setup({
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-               diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
@@ -388,7 +388,7 @@ require('lazy').setup({
         },
       }
     end,
-  },  -- Highlight todo, notes, etc in comments
+  }, -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
@@ -415,10 +415,10 @@ require('lazy').setup({
       { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
     },
     config = function()
-     -- [[ Configure Telescope ]]
+      -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
-         defaults = {
+        defaults = {
           file_ignore_patterns = {
             '.git/',
           },
@@ -469,7 +469,7 @@ require('lazy').setup({
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
       -- It's also possible to pass additional configuration options.
-       vim.keymap.set('n', '<leader>s/', function()
+      vim.keymap.set('n', '<leader>s/', function()
         builtin.live_grep {
           prompt_title = 'Live Grep in All Files',
         }
@@ -492,7 +492,7 @@ require('lazy').setup({
     opts = {
       signs = {
         add = { text = '' },
-        change = { text = ''},
+        change = { text = '' },
         delete = { text = '' },
         topdelete = { text = '' },
         changedelete = { text = '' },
@@ -543,15 +543,21 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
-        python = { "isort", "black" },
+        python = { 'isort', 'black' },
       },
     },
   },
-})
+  {
+    'github/copilot.vim',
+    config = function()
+      -- Your custom configuration for Copilot, if any, goes here
+    end,
+  },
+}
 -- override the status line colors
-vim.api.nvim_set_hl(0, "MiniStatuslineModeNormal", { fg = "#000000", bg = "#87af5f", bold = true }) -- Normal mode
-vim.api.nvim_set_hl(0, "MiniStatuslineModeInsert", { fg = "#000000", bg = "#5fafff", bold = true }) -- Insert mode
-vim.api.nvim_set_hl(0, "MiniStatuslineModeVisual", { fg = "#000000", bg = "#d7af5f", bold = true }) -- Visual mode
-vim.api.nvim_set_hl(0, "MiniStatuslineModeReplace", { fg = "#ffffff", bg = "#af0000", bold = true }) -- Replace mode
-vim.api.nvim_set_hl(0, "MiniStatuslineModeCommand", { fg = "#ffffff", bg = "#ff5733", bold = true }) -- Command mode
-vim.api.nvim_set_hl(0, "MiniStatuslineInactive", { fg = "#aaaaaa", bg = "#303030" }) -- Inactive windowkkim.api.nvim_set_hl(0, "MiniStatuslineInactive", { fg = "#aaaaaa", bg = "#303030" }) -- Inactive windowkk
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeNormal', { fg = '#000000', bg = '#87af5f', bold = true }) -- Normal mode
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeInsert', { fg = '#000000', bg = '#5fafff', bold = true }) -- Insert mode
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual', { fg = '#000000', bg = '#d7af5f', bold = true }) -- Visual mode
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeReplace', { fg = '#ffffff', bg = '#af0000', bold = true }) -- Replace mode
+vim.api.nvim_set_hl(0, 'MiniStatuslineModeCommand', { fg = '#ffffff', bg = '#ff5733', bold = true }) -- Command mode
+vim.api.nvim_set_hl(0, 'MiniStatuslineInactive', { fg = '#aaaaaa', bg = '#303030' }) -- Inactive windowkkim.api.nvim_set_hl(0, "MiniStatuslineInactive", { fg = "#aaaaaa", bg = "#303030" }) -- Inactive windowkk
