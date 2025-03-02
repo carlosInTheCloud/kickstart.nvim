@@ -106,6 +106,8 @@ vim.keymap.set('n', '<leader>nt', '<cmd>Neotree<CR>', {})
 vim.keymap.set('n', 'qu', '<cmd>q<CR>', {})
 vim.keymap.set('n', '<leader>vt', '<cmd>vert term<CR>', {})
 vim.keymap.set('n', '<leader>wa', '<cmd>wa<CR>', {})
+--copilot key maps
+vim.keymap.set('n', '<C-\\>', '<Plug>(copilot-suggest)', {})
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -553,6 +555,32 @@ require('lazy').setup {
       -- Your custom configuration for Copilot, if any, goes here
     end,
   },
+  {
+    {
+      'CopilotC-Nvim/CopilotChat.nvim',
+      dependencies = {
+        { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
+        { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+      },
+      build = 'make tiktoken', -- Only on MacOS or Linux
+      opts = {
+        -- See Configuration section for options
+      },
+      -- See Commands section for default commands if you want to lazy load on them
+      config = function()
+        require('CopilotChat').setup {
+          window = {
+            layout = 'vertical', -- Keeps it as a floating window instead of a full buffer
+            position = 'right',
+            width = 80, -- Adjust width to fit your setup
+            border = 'none', -- Removes window border
+            title = '', -- Hides title text
+            transparency = 0, -- No transparency effect
+          },
+        }
+      end,
+    },
+  },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -678,3 +706,5 @@ vim.api.nvim_set_hl(0, 'MiniStatuslineModeVisual', { fg = '#000000', bg = '#d7af
 vim.api.nvim_set_hl(0, 'MiniStatuslineModeReplace', { fg = '#ffffff', bg = '#af0000', bold = true }) -- Replace mode
 vim.api.nvim_set_hl(0, 'MiniStatuslineModeCommand', { fg = '#ffffff', bg = '#ff5733', bold = true }) -- Command mode
 vim.api.nvim_set_hl(0, 'MiniStatuslineInactive', { fg = '#aaaaaa', bg = '#303030' }) -- Inactive windowkkim.api.nvim_set_hl(0, "MiniStatuslineInactive", { fg = "#aaaaaa", bg = "#303030" }) -- Inactive windowkk
+vim.cmd 'hi NormalFloat guibg=NONE ctermbg=NONE'
+vim.cmd 'hi CopilotChatBorder guibg=NONE guifg=NONE'
