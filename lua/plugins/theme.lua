@@ -13,6 +13,8 @@ return {
           Keyword = { fg = '#b76fb3' }, -- for
           ['@keyword.function'] = { fg = '#4688cc' }, -- `func`
           Function = { fg = '#f9e79f' }, -- BubbleSort
+          ['@type'] = { fg = '#3ca38b' }, -- General type color
+          ['@type.builtin'] = { fg = '#3ca38b' }, -- Built-in types like int, float, string
           String = { fg = '#c27e65' }, -- "Hello, World!"
           Identifier = { fg = '#8dd3fd' }, -- variableName
           ['@variable'] = { fg = '#79d8e5' },
