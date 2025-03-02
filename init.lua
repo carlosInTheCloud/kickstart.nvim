@@ -66,18 +66,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
---vim.opt.termguicolors = true -- Ensure true color support
--- Set the background color of the main buffer
-vim.api.nvim_set_hl(0, 'Normal', { bg = '#000000' })
--- Set a different background for inactive buffers
-vim.api.nvim_set_hl(0, 'NormalNC', { bg = '#050505' })
--- Set the vertical border color:
-vim.api.nvim_set_hl(0, 'WinSeparator', { fg = '#222222', bg = 'NONE' })
--- Set the status bar color
--- vim.api.nvim_set_hl(0, "StatusLineNC", { fg = "#aaaaaa", bg = "#101010", bold = true }) -- Active window
--- vim.api.nvim_set_hl(0, "StatusLine", { fg = "#aaaaaa", bg = "#303030" }) -- Inactive windows
--- Set default font color
-vim.api.nvim_set_hl(0, 'Normal', { fg = '#ffffff' }) -- White text on dark background
 ----------------------------------------------------------------------------------------------------------
 --- KEY MAPS
 ------------------------------------------------------------------------------------------------------------
