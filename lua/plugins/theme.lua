@@ -8,6 +8,20 @@ return {
       options = {
         hide_end_of_buffer = true,
       },
+      groups = {
+        all = {
+          Keyword = { fg = '#b76fb3' }, -- for
+          ['@keyword.function'] = { fg = '#4688cc' }, -- `func`
+          Function = { fg = '#f9e79f' }, -- BubbleSort
+          String = { fg = '#c27e65' }, -- "Hello, World!"
+          Identifier = { fg = '#8dd3fd' }, -- variableName
+          ['@variable'] = { fg = '#79d8e5' },
+          Operator = { fg = '#ffffff' }, -- +, -, *, /
+          Boolean = { fg = '#1973d8' }, -- boolean
+          ['@boolean'] = { fg = '#4688cc' }, -- boolean
+          Comment = { fg = '#588844' },
+        },
+      },
     }
     vim.cmd 'colorscheme github_dark_high_contrast'
     vim.schedule(function()
