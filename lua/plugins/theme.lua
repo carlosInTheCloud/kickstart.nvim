@@ -22,6 +22,8 @@ return {
           Boolean = { fg = '#1973d8' }, -- boolean
           ['@boolean'] = { fg = '#4688cc' }, -- boolean
           Comment = { fg = '#588844' },
+          Normal = { fg = '#cacaca' },
+          NormalNC = { fg = '#cacaca' },
         },
       },
     }
@@ -29,7 +31,7 @@ return {
     vim.schedule(function()
       vim.cmd 'hi WinSeparator guifg=#555555 guibg=NONE'
       vim.cmd 'hi Normal guibg=#000000'
-      vim.cmd 'hi NormalNC guibg=#050505'
+      vim.cmd 'hi NormalNC guibg=#010101'
     end)
   end,
 }
