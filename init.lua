@@ -25,8 +25,10 @@ vim.opt.timeoutlen = 300
 -- Configure how new splits should be opened
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.expandtab = false
 vim.opt.tabstop = 3
 vim.opt.shiftwidth = 3
+vim.opt.softtabstop = 3
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -94,6 +96,38 @@ vim.keymap.set('n', '<leader>nt', '<cmd>Neotree<CR>', {})
 vim.keymap.set('n', 'qu', '<cmd>q<CR>', {})
 vim.keymap.set('n', '<leader>vt', '<cmd>vert term<CR>', {})
 vim.keymap.set('n', '<leader>wa', '<cmd>wa<CR>', {})
+vim.keymap.set('n', '<leader>ct', ':CopilotChatOpen<CR>', {})
+-- Make the behavior of Caps Lock the same as when it's not on
+for _, key in ipairs {
+  { 'A', 'a' },
+  --  { 'B', 'b' },
+  { 'C', 'c' },
+  { 'D', 'd' },
+  { 'E', 'e' },
+  { 'F', 'f' },
+  --  { 'G', 'g' },
+  { 'H', 'h' },
+  { 'I', 'i' },
+  { 'J', 'j' },
+  { 'K', 'k' },
+  { 'L', 'l' },
+  { 'M', 'm' },
+  { 'N', 'n' },
+  --  { 'O', 'o' },
+  { 'P', 'p' },
+  { 'Q', 'q' },
+  { 'R', 'r' },
+  { 'S', 's' },
+  { 'T', 't' },
+  { 'U', 'u' },
+  { 'V', 'v' },
+  { 'W', 'w' },
+  { 'X', 'x' },
+  { 'Y', 'y' },
+  { 'Z', 'z' },
+} do
+  vim.api.nvim_set_keymap('n', key[1], key[2], { noremap = true, silent = true })
+end
 --copilot key maps
 vim.keymap.set('n', '<C-\\>', '<Plug>(copilot-suggest)', {})
 -- Highlight when yanking (copying) text
