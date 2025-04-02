@@ -175,9 +175,30 @@ p
 ```
 *:%s//<new word>/g
 ```
+### Compare files
+#### Compare two files
+
+```
+ <space>sC
+```
+
+#### Compare with current file
+
+```
+ <space>sc
+```
 
 ### Multiline comment
-## With VIM Commands
+
+#### WIth mini.comments
+highlight text
+```
+<ctrl>v(h,j,k,l)
+```
+hit gc to comment. Repeat to uncomment
+
+
+#### With VIM Commands
 highlight text 
 ```
 <ctrl>v(h,j,k,l)
@@ -199,13 +220,6 @@ Press escape
 ```
 <Esc>
 ```
-## WIth mini.comments
-highlight text
-```
-<ctrl>v(h,j,k,l)
-```
-hit gc to comment. Repeat to uncomment
-
 ### Multiline Indent
 highlight text 
 ```

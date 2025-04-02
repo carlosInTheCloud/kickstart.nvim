@@ -26,6 +26,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- [[ Configure Telescope ]]
     -- See `:help telescope` and `:help telescope.setup()`
     require('telescope').setup {
+      require('telescope').load_extension 'diff',
       defaults = {
         file_ignore_patterns = {
           '.git/',

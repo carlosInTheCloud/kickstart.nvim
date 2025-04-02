@@ -130,6 +130,12 @@ for _, key in ipairs {
 end
 --copilot key maps
 vim.keymap.set('n', '<C-\\>', '<Plug>(copilot-suggest)', {})
+vim.keymap.set('n', '<leader>sC', function()
+  require('telescope').extensions.diff.diff_files { hidden = true }
+end, { desc = 'Compare 2 files' })
+vim.keymap.set('n', '<leader>sc', function()
+  require('telescope').extensions.diff.diff_current { hidden = true }
+end, { desc = 'Compare file with current' })
 -- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
