@@ -273,6 +273,20 @@ Open file, then on normal mode type command
 ```
 Cppath
 ```
+## Copilot
+### Open Prompt
+```
+:CopilotChat
+```
+### Submit current prompt on insert mode
+```
+<C-s>
+```
+
+### Submit current prompt on normal mode
+```
+<CR>
+```
 
 ## Other
 
