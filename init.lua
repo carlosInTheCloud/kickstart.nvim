@@ -97,6 +97,19 @@ vim.keymap.set('n', 'qu', '<cmd>q<CR>', {})
 vim.keymap.set('n', '<leader>vt', '<cmd>vert term<CR>', {})
 vim.keymap.set('n', '<leader>wa', '<cmd>wa<CR>', {})
 vim.keymap.set('n', '<leader>ct', ':CopilotChatOpen<CR>', {})
+vim.keymap.set('n', '<leader>ce', ':CopilotChatExplain<CR>', {})
+vim.keymap.set('v', '<leader>ce', ':CopilotChatExplain<CR>', {})
+local copilot_prompt = function()
+  vim.ui.input({ prompt = 'CopilotChat Prompt ' }, function(input)
+    require('CopilotChat').ask(input)
+  end)
+end
+vim.keymap.set('n', '<leader>cp', function()
+  copilot_prompt()
+end, { desc = 'CopilotChat Prompt' })
+vim.keymap.set('v', '<leader>cp', function()
+  copilot_prompt()
+end, { desc = 'CopilotChat Prompt' })
 -- Make the behavior of Caps Lock the same as when it's not on
 for _, key in ipairs {
   { 'A', 'a' },
